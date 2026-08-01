@@ -13,7 +13,7 @@ public final class IcbmClient {
     public static final String MOD_ID = "icbm_client";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    private IcbmClient() {
+    public IcbmClient() {
     }
 
     public static ResourceLocation id(String path) {
