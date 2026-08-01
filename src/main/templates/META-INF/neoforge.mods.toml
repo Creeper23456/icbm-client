@@ -10,6 +10,9 @@ description='''
 Optional client diagnostics for ICBM Region simulation boundaries.
 '''
 
+[[mixins]]
+config="icbm_client.mixins.json"
+
 [[dependencies.${mod_id}]]
 modId="neoforge"
 type="required"

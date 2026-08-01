@@ -2,7 +2,7 @@
 
 ICBM Client 是一个 NeoForge 1.21.1 纯客户端诊断模组。
 
-它从支持 ICBM 可选 Play payload 协议的服务器接收 Region 裁切与性能状态；F3 开启时显示服务器指标，并在模拟距离被 Region 边界裁切时绘制红色边界线。
+它从支持 ICBM 可选 Play payload 协议的服务器接收 Region 裁切与性能状态；F3 开启时显示服务器指标，并在模拟距离被 Region 边界裁切时使用 Minecraft 原版世界边境效果渲染 Region。该效果只在客户端显示，实际边境功能始终由服务器实现。
 
 没有 ICBM 服务端扩展时，客户端不会发送专有包，也不会阻止加入服务器。
 

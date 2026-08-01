@@ -18,7 +18,7 @@ class StatePayloadCodecTest {
                 42L,
                 ResourceLocation.withDefaultNamespace("overworld"),
                 true,
-                Optional.of(new RegionBoundary(-16, -32, 48, 64)),
+                Optional.of(new RegionBoundary(-16, -32, 48, 32)),
                 Optional.of("region-alpha"),
                 Optional.of("worker-3"),
                 Optional.of(12.5D),

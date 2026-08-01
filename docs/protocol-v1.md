@@ -23,7 +23,7 @@ ICBM 服务端不是 FML/NeoForge 服务端；它使用原版 `minecraft:registe
 | 2 | VarLong | `sequence` | 服务端单调递增快照序号；客户端丢弃较旧序号。 |
 | 3 | ResourceLocation | `dimension` | 快照所属维度，例如 `minecraft:overworld`。 |
 | 4 | Boolean | `simulationClipped` | 当前玩家模拟范围是否已被 Region 实际边界裁切。 |
-| 5 | Boolean + 数据 | `region` | 有值时依次写 `minX`、`minZ`、`maxX`、`maxZ` 四个 VarInt。坐标是块边界，最小值含、最大值不含。 |
+| 5 | Boolean + 数据 | `region` | 有值时依次写 `minX`、`minZ`、`maxX`、`maxZ` 四个 VarInt。Region 是严格的正方形；坐标是块边界，最小值含、最大值不含。 |
 | 6 | Boolean + String | `regionId` | 可选 Region ID，UTF-8，最大 256 字节。 |
 | 7 | Boolean + String | `processId` | 可选微服务进程 ID，UTF-8，最大 256 字节；Y>400 的 Core 虚拟会话固定为 Init 主进程 ID `"1"`。普通单进程 live-world bridge 必须留空，不得虚构 RegionService 进程。 |
 | 8 | Boolean + Double | `speedMetersPerSecond` | 可选、由服务器计算的玩家速度（m/s）。 |
@@ -32,6 +32,6 @@ ICBM 服务端不是 FML/NeoForge 服务端；它使用原版 `minecraft:registe
 
 服务端在订阅成功且确认客户端可接收快照后立刻发送一份快照，并随后约每秒推送；Region/裁切状态变化应在下一服务器 tick 推送。每份快照是完整状态，不出现的可选字段代表未知，客户端不得继承旧值。
 
-客户端仅使用当前维度、未过期、且序号不倒退的快照。只有 `simulationClipped=true` 且 Region 存在时可渲染边界。UI 显示 `regionId`，若它缺席则显示 `processId`；速度仅作两位小数格式化。
+客户端仅使用当前维度、未过期、且序号不倒退的快照。只有 `simulationClipped=true` 且 Region 存在时可在 F3 界面开启期间使用 Minecraft 原版世界边境效果渲染 Region。该临时边境只提供渲染数据，不修改客户端 Level 的实际世界边境、碰撞或移动判断；实际边境功能由服务端实现。UI 显示 `regionId`，若它缺席则显示 `processId`；速度仅作两位小数格式化。
 
 未来不兼容的字段编码变化必须使用新的 payload 网络版本和/或新的 payload ID；允许的可选字段扩展应追加在末尾并同步升级版本。

@@ -24,5 +24,5 @@
 ## 客户端行为
 
 - 仅在 F3 调试界面显示 ICBM 指标；不要覆盖 ActionBar、聊天或其他 HUD。
-- 仅当 F3 开启、快照未过期、维度匹配且 `simulationClipped=true` 时绘制 Region 红色边线。
+- 仅当 F3 开启、快照未过期、维度匹配且 `simulationClipped=true` 时使用 Minecraft 原版世界边境效果渲染 Region；这只影响渲染，实际边境功能由服务器实现。
 - F3 开启时订阅，关闭/断开时取消订阅。断开、维度不匹配或数据过期必须清空状态，不能显示陈旧边界。
