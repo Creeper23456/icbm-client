@@ -27,7 +27,7 @@ public final class IcbmPayloads {
 
     private static void handleSnapshot(StateSnapshotPayload payload, IPayloadContext context) {
         if (payload.protocolVersion() == PROTOCOL_VERSION) {
-            IcbmClientState.INSTANCE.accept(payload);
+            context.enqueueWork(() -> IcbmClientState.INSTANCE.accept(payload));
         } else {
             IcbmClient.LOGGER.debug("Ignoring ICBM state snapshot with unsupported protocol version {}", payload.protocolVersion());
         }
